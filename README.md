@@ -11,7 +11,7 @@ kivy framework:  https://kivy.org/
 
 after install both, just open the terminal, go to the project's folder and run: python main.py
 
-# How can I run it pn my phone?
+# How can I run it on my phone?
 
 If you want to run this project on your smartphone, you'll need to download the python and kivy (links above) and you will need to use another framework called buildozer. To install it, use the pip command.
 
