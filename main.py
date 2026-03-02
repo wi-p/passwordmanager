@@ -1,17 +1,18 @@
 from kivymd.app import MDApp
-from kivy.uix.screenmanager import ScreenManager, Screen 
+from kivymd.uix.screen import MDScreen
 
 
-class Manager(ScreenManager):
+class HomeScreen(MDScreen):
     pass 
 
-class StartScreen(Screen):
+class AddScreen(MDScreen):
+    pass 
+
+class SettingScreen(MDScreen):
     pass
-        
 
 class PassMana(MDApp):
-    def build(self):
-        return StartScreen()
-    
+    pass
+
 if __name__ == '__main__':
     PassMana().run()

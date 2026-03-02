@@ -1,18 +1,31 @@
-<StartScreen>
-    MDBoxLayout:
-        orientation: 'vertical'
-        id:'test'
-                
+ScreenManager:
+    HomeScreen:
+        name:'home'
+    
+    AddScreen:
+        name:'add'
+    
+    SettingScreen:
+        name: 'setting'
 
-    MDBottomNavigation:
-        MDBottomNavigationItem:
-            text:"Index"
+
+<HomeScreen>:
+    MDBoxLayout:
+        orientation:'vertical'
+        
+        MDTopAppBar:
+            title:'Passwords'
             
-        
-        MDBottomNavigationItem:
-            text:'Add +'
-            icon: 'plus'
-        
-        MDBottomNavigationItem:
-            text:'Settings'
-            icon:'application-settings'
+        MDBoxLayout:
+            orientation:'vertical'
+            id:'boxpasswords'
+            
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                icon:'home'
+                
+            MDBottomNavigationItem:
+                icon:'plus'
+                
+            MDBottomNavigationItem:
+                icon:'cog'
