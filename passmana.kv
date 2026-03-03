@@ -30,6 +30,7 @@ ScreenManager:
                 
             MDBottomNavigationItem:
                 icon:'cog'
+                on_tab_press: app.root.current = 'setting'
 
 <AddScreen>:
     MDBoxLayout:
@@ -69,10 +70,32 @@ ScreenManager:
         MDBottomNavigation:
             MDBottomNavigationItem:
                 icon:'home'
+                on_tab_press: app.root.current = 'home'
                 
             MDBottomNavigationItem:
                 icon:'plus'
-                on_tab_press: app.root.current = 'add'
                 
+            MDBottomNavigationItem:
+                icon:'cog'
+                on_tab_press: app.root.current = 'setting'
+
+<SettingScreen>:
+    MDBoxLayout:
+        orientation:'vertical'
+
+        MDTopAppBar:
+            title:'Settings'
+        
+        MDBoxLayout:
+
+        MDBottomNavigation:
+            MDBottomNavigationItem:
+                icon:'home'
+                on_tab_press:app.root.current = 'home'
+            
+            MDBottomNavigationItem:
+                icon:'plus'
+                on_tab_press: app.root.current = 'add'
+            
             MDBottomNavigationItem:
                 icon:'cog'
