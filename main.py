@@ -3,6 +3,10 @@ from kivymd.uix.screen import MDScreen
 from simpledbmanager import DataBase
 from kivymd.uix.list import OneLineListItem
 from kivy.clock import Clock
+from kivymd.uix.label import MDLabel
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.button import MDIconButton
+from kivy.metrics import dp
 
 class DBApp(DataBase):
     pass
@@ -10,16 +14,32 @@ class DBApp(DataBase):
 class HomeScreen(MDScreen):
     def on_enter(self, *args):
         Clock.schedule_once(self.load_passwords)
+    
+    def deletePassword(self, id ):
+        DBApp('appdatabase').deleteItemTable('AppPassowrd', 'id', id)
 
     def load_passwords(self, *args):
-        values = DBApp('appdatabase').readTable('appname','(AppPassowrd)')
+        values = DBApp('appdatabase').readTable('AppPassowrd', '*')
+        print(values)
 
         self.ids.lstpwd.clear_widgets()
 
         for value in values:
+            box = MDBoxLayout()
+            box.size_hint_y = None
+            box.height = dp(50)
+            box.spacing = dp(10)
+
+            box.add_widget(MDLabel(text = str(value[0]), size_hint_x = None, width = dp(40)))
+            box.add_widget(MDLabel(text = value[1]))
+            box.add_widget(MDLabel(text = value[2]))
+            box.add_widget(MDLabel(text = value[3]))
+            box.add_widget(MDIconButton(icon='trash-can', md_bg_color = 'red'))
+
             self.ids.lstpwd.add_widget(
-                OneLineListItem(text=value[0])
+                box
             )
+        
 
 class AddScreen(MDScreen):
     def adicionar(self):

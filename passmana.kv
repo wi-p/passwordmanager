@@ -16,13 +16,49 @@ ScreenManager:
         
         MDTopAppBar:
             title:'Passwords'
+
+        MDBoxLayout:
+            size_hint_y:None
+            height:dp(20)
+            padding: dp(10)
+            spacing:dp(10)
+
+            MDLabel:
+                text:'ID'
+                bold:True
+                size_hint_x:None 
+                width:dp(40)
+
+
+            MDLabel:
+                text:'App name'
+                bold:True
+            
+            MDLabel:
+                text:'Username'
+                bold:True
+            
+            MDLabel:
+                text:'Password'
+                bold:True
+            
+            MDLabel:
+                text:'Option'
+                bold:True
+
             
         MDScrollView:
-            MDList:
-                spacing:dp(40)
+            MDBoxLayout:
+                spacing:dp(20)
+                size_hint_y:None
+                orientation:'vertical'
+                height:self.minimum_height
                 id:lstpwd
+                padding:dp(10)
             
         MDBottomNavigation:
+            size_hint_y:0.2
+
             MDBottomNavigationItem:
                 icon:'home'
                 
