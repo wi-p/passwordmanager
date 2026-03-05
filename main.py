@@ -1,12 +1,31 @@
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
+from simpledbmanager import DataBase
+from kivymd.uix.list import OneLineListItem
+
+class DBApp(DataBase):
+    pass
 
 
 class HomeScreen(MDScreen):
-    pass 
+    def on_enter(self,*args):
+        values = DBApp('appdatabase').readTable('appname','(AppPassowrd)')
+
+        #for value in values:
+            #self.ids.lstpwd.add_widget(OneLineListItem(text=value[0]))
+
 
 class AddScreen(MDScreen):
-    pass 
+    def adicionar(self):
+        rg = [self.ids.appname, self.ids.apppassword, self.ids.appusername]
+
+        DBApp('appdatabase').insertInTable('AppPassowrd', [rg[0].text,rg[1].text,rg[2].text],'appname, username,password')
+
+        for item in rg:
+            item.text = ''
+
+        
+
 
 class SettingScreen(MDScreen):
     pass
