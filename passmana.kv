@@ -12,12 +12,14 @@ ScreenManager:
 <HomeScreen>:
     MDBoxLayout:
         orientation:'vertical'
+        spacing:dp(50)
         
         MDTopAppBar:
             title:'Passwords'
             
         MDScrollView:
             MDList:
+                spacing:dp(40)
                 id:lstpwd
             
         MDBottomNavigation:
