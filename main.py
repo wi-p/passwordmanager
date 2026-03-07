@@ -1,7 +1,6 @@
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
 from simpledbmanager import DataBase
-from kivymd.uix.list import OneLineListItem
 from kivy.clock import Clock
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -16,14 +15,12 @@ class HomeScreen(MDScreen):
     def on_enter(self, *args):
         Clock.schedule_once(self.load_passwords)
     
-    def deletePassword(self, id, instance ):
-        DBApp('appdatabase').deleteItemTable('AppPassowrd', 'id', id)
-
-        self.ids.lstpwd.remove_widget(self.ids.id)
+    def deletePassword(self, box, instance):
+        DBApp('appdatabase').deleteItemTable('AppPassowrd', 'id', box.id)
+        self.ids.lstpwd.remove_widget(box)
 
     def load_passwords(self, *args):
         values = DBApp('appdatabase').readTable('AppPassowrd', '*')
-        print(values)
 
         self.ids.lstpwd.clear_widgets()
 
@@ -33,8 +30,9 @@ class HomeScreen(MDScreen):
             box.size_hint_y = None
             box.height = dp(50)
             box.spacing = dp(10)
-            btn = MDIconButton(icon='trash-can', md_bg_color = 'red')
-            btn.bind(on_release = partial(self.deletePassword, value[0]))
+            btn = MDIconButton(icon='trash-can', md_bg_color = 'red', id = str(value[0]))
+
+            btn.bind(on_release = partial(self.deletePassword, box))
 
             box.add_widget(MDLabel(text = str(value[0]), size_hint_x = None, width = dp(40)))
             box.add_widget(MDLabel(text = value[1]))
@@ -51,21 +49,34 @@ class HomeScreen(MDScreen):
 class AddScreen(MDScreen):
     def adicionar(self):
         rg = [self.ids.appname, self.ids.apppassword, self.ids.appusername]
-        print(self.children)
 
         DBApp('appdatabase').insertInTable('AppPassowrd', [rg[0].text,rg[1].text,rg[2].text],'appname, username,password')
 
         for item in rg:
             item.text = ''
 
-        
-
-
 class SettingScreen(MDScreen):
     pass
 
 class PassMana(MDApp):
-    pass
+    def build_config(self, config):
+        config.setdefaults('Theme',{
+            'style':'Light',
+            'palette':'Blue'
+        })
+
+    def build(self):
+        self.theme_cls.theme_style = self.config.get('Theme', 'style')
+        self.theme_cls.primary_palette = self.config.get('Theme', 'palette')
+
+        self.theme_cls.theme_style_switch_animation = True
+    
+    def changeTheme(self, *args):
+        newStyle = 'Dark' if self.theme_cls.theme_style == 'Light' else 'Dark'
+        self.theme_cls.theme_style = newStyle
+
+        self.config.set('Theme', 'style', newStyle)
+        self.config.write()
 
 if __name__ == '__main__':
     PassMana().run()
