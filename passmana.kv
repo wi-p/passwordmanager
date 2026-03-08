@@ -157,7 +157,8 @@ ScreenManager:
             title:'Settings'
         
         MDBoxLayout:
-            padding:dp(50), 0, dp(10), 0
+            padding:dp(20), 0, dp(20), 0
+            orientation:'vertical'
 
             MDBoxLayout:
                 size_hint_y:None
@@ -169,8 +170,19 @@ ScreenManager:
                 MDRaisedButton:
                     text: app.theme_cls.theme_style
                     on_release:app.changeTheme()
+            
+            MDLabel:
+                text: "About this software"
+                bold:True 
+            
+            MDLabel:
+                text:"""This is a simple password manager app developed to help phone users to handle with many passwords they have in their phones, being very hard sometimes. This software is totally open source, which means the full cole is available on github. Plus, you're free to use and modify the code as long as you keep my credits"""
+                size_hint_y:None
+                height:dp(200) 
+                halign:'justify'
 
         MDBottomNavigation:
+
             MDBottomNavigationItem:
                 icon:'home'
                 on_tab_press:app.root.current = 'home'
