@@ -8,8 +8,10 @@ from kivymd.uix.button import MDIconButton
 from kivy.metrics import dp
 from functools import partial
 
+
 class DBApp(DataBase):
     pass
+
 
 class HomeScreen(MDScreen):
     def on_enter(self, *args):
@@ -42,8 +44,7 @@ class HomeScreen(MDScreen):
 
             self.ids.lstpwd.add_widget(
                 box
-            )
-        
+            )       
         
 
 class AddScreen(MDScreen):
@@ -54,29 +55,34 @@ class AddScreen(MDScreen):
 
         for item in rg:
             item.text = ''
+            
 
 class SettingScreen(MDScreen):
     pass
 
+
 class PassMana(MDApp):
     def build_config(self, config):
-        config.setdefaults('Theme',{
-            'style':'Light',
-            'palette':'Blue'
+        config.setdefaults('theme',{
+            'theme_style':'Light',
+            'primary_palette':'Blue'
         })
 
     def build(self):
-        self.theme_cls.theme_style = self.config.get('Theme', 'style')
-        self.theme_cls.primary_palette = self.config.get('Theme', 'palette')
+        self.theme_cls.theme_style = self.config.get('Theme', 'theme_style')
+        self.theme_cls.primary_palette = self.config.get('Theme', 'primary_palette')
 
         self.theme_cls.theme_style_switch_animation = True
     
     def changeTheme(self, *args):
-        newStyle = 'Dark' if self.theme_cls.theme_style == 'Light' else 'Dark'
-        self.theme_cls.theme_style = newStyle
-
-        self.config.set('Theme', 'style', newStyle)
+        if self.theme_cls.theme_style == "Light":
+            self.theme_cls.theme_style = "Dark"
+        else:
+            self.theme_cls.theme_style = "Light"
+        
+        self.config.set('Theme', 'theme_style', self.theme_cls.theme_style)
         self.config.write()
+
 
 if __name__ == '__main__':
     PassMana().run()

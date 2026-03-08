@@ -20,7 +20,7 @@ ScreenManager:
         MDBoxLayout:
             size_hint_y:None
             height:dp(20)
-            padding: dp(10)
+            padding:dp(10)
             spacing:dp(10)
 
             MDLabel:
@@ -28,7 +28,6 @@ ScreenManager:
                 bold:True
                 size_hint_x:None 
                 width:dp(40)
-
 
             MDLabel:
                 text:'App name'
@@ -46,7 +45,6 @@ ScreenManager:
                 text:'Option'
                 bold:True
 
-            
         MDScrollView:
             MDBoxLayout:
                 spacing:dp(20)
@@ -57,7 +55,7 @@ ScreenManager:
                 padding:dp(10)
             
         MDBottomNavigation:
-            size_hint_y:0.2
+            size_hint_y:0.1
 
             MDBottomNavigationItem:
                 icon:'home'
@@ -159,6 +157,18 @@ ScreenManager:
             title:'Settings'
         
         MDBoxLayout:
+            padding:dp(50), 0, dp(10), 0
+
+            MDBoxLayout:
+                size_hint_y:None
+                height:dp(100)
+                
+                MDLabel:
+                    text:'Theme:'
+                
+                MDRaisedButton:
+                    text: app.theme_cls.theme_style
+                    on_release:app.changeTheme()
 
         MDBottomNavigation:
             MDBottomNavigationItem:
