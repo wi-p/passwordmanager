@@ -7,6 +7,7 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton
 from kivy.metrics import dp
 from functools import partial
+from kivymd.uix.dialog import MDDialog
 
 
 class DBApp(DataBase):
@@ -85,4 +86,5 @@ class PassMana(MDApp):
 
 
 if __name__ == '__main__':
+
     PassMana().run()
