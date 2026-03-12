@@ -22,6 +22,9 @@ class HomeScreen(MDScreen):
         DBApp('appdatabase').deleteItemTable('AppPassowrd', 'id', box.id)
         self.ids.lstpwd.remove_widget(box)
 
+    def copyItem(self):
+        pass # Função para copiar item ao toca-lo.
+
     def load_passwords(self, *args):
         values = DBApp('appdatabase').readTable('AppPassowrd', '*')
 
@@ -88,3 +91,4 @@ class PassMana(MDApp):
 if __name__ == '__main__':
 
     PassMana().run()
+
