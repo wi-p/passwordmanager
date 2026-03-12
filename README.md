@@ -10,18 +10,23 @@ The app does not access the internet, your location, camera, microphone, etc. It
 
 If you want to download and run this project on your computer, you'll need to have 3.0+ python version and kivy framework both installed on your machine. both can be found through the links bellow:
 
-Python programming language:  https://www.python.org/
-kivy framework:  https://kivy.org/
+Python programming language: https://www.python.org/
 
-after install both, just open the terminal, go to the project's folder and run: python main.py
+kivy framework: https://kivy.org/
+
+kivymd:  https://kivymd.readthedocs.io/en/latest/
+
+after install the tools, just open the terminal, go to the project's folder and run: python main.py
 
 # How can I run it on my phone?
 
-If you want to run this project on your smartphone, you'll need to download the python and kivy (links above) and you will need to use another framework called buildozer. To install it, use the pip command.
+If you want to run this project on your smartphone, you'll need to download the python, kivy and kivymd (links above) and you will need to use another framework called buildozer. To install it, use the pip command.
 
 Buildozer documentation:  https://buildozer.readthedocs.io/en/latest/
 
-Buildozer is tool used to compile and make your code runnable on smartphone devices.
+Buildozer is tool used to compile and make your code runnable on smartphone devices. It transforms your source code into an apk.
+
+after this, you can install it on your smartphone or improve it and punlish it on your playstore profile.
 
 # Can I update the source code?
 
