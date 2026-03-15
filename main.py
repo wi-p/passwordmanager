@@ -4,7 +4,7 @@ from simpledbmanager import DataBase
 from kivy.clock import Clock
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton
+from kivymd.uix.button import MDIconButton, MDFlatButton
 from kivy.metrics import dp
 from functools import partial
 from kivymd.uix.dialog import MDDialog
@@ -15,6 +15,8 @@ class DBApp(DataBase):
 
 
 class HomeScreen(MDScreen):
+    dialog = None 
+
     def on_enter(self, *args):
         Clock.schedule_once(self.load_passwords)
     
@@ -32,6 +34,8 @@ class HomeScreen(MDScreen):
 
         for value in values:
             box = MDBoxLayout()
+            box.bind(on_touch_down = self.openDialog)
+
             box.id = str(value[0])
             box.size_hint_y = None
             box.height = dp(50)
@@ -49,7 +53,25 @@ class HomeScreen(MDScreen):
             self.ids.lstpwd.add_widget(
                 box
             )       
-        
+    
+
+    def openDialog(self, instance, touch):
+        if not self.dialog :
+            self.dialog = MDDialog(
+                text = 'Copy infos',
+
+                buttons = [
+                    MDFlatButton(text = 'Copy password'), 
+                    MDFlatButton(text = 'Copy username'),
+                    MDFlatButton(text = 'Dismiss', on_release = MDDialog().dismiss())
+                ]
+            )
+
+            
+
+            self.dialog.open()
+
+            self.dialog = None
 
 class AddScreen(MDScreen):
     def adicionar(self):
@@ -66,6 +88,8 @@ class SettingScreen(MDScreen):
 
 
 class PassMana(MDApp):
+
+
     def build_config(self, config):
         config.setdefaults('theme',{
             'theme_style':'Light',
