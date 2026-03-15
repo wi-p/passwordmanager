@@ -59,19 +59,20 @@ class HomeScreen(MDScreen):
         if not self.dialog :
             self.dialog = MDDialog(
                 text = 'Copy infos',
-
                 buttons = [
                     MDFlatButton(text = 'Copy password'), 
                     MDFlatButton(text = 'Copy username'),
-                    MDFlatButton(text = 'Dismiss', on_release = MDDialog().dismiss())
+                    MDFlatButton(text = 'Dismiss', on_release = self.closeDialog),
                 ]
             )
 
-            
-
             self.dialog.open()
 
-            self.dialog = None
+    
+    def closeDialog(self, obj):
+        self.dialog.dismiss()
+        
+        self.dialog = None 
 
 class AddScreen(MDScreen):
     def adicionar(self):
