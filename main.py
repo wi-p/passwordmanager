@@ -61,7 +61,7 @@ class HomeScreen(MDScreen):
                 text = 'Copy infos',
                 buttons = [
                     MDFlatButton(text = 'Copy password'), 
-                    MDFlatButton(text = 'Copy username'),
+                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyText, )),
                     MDFlatButton(text = 'Dismiss', on_release = self.closeDialog),
                 ]
             )
@@ -72,8 +72,7 @@ class HomeScreen(MDScreen):
     def copyText(self, label):
         pass 
         
-
-    
+        
     def closeDialog(self, obj):
         self.dialog.dismiss()
         
