@@ -68,6 +68,11 @@ class HomeScreen(MDScreen):
 
             self.dialog.open()
 
+    # I have to make it 
+    def copyText(self, label):
+        pass 
+        
+
     
     def closeDialog(self, obj):
         self.dialog.dismiss()
