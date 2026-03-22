@@ -26,6 +26,8 @@ Buildozer documentation:  https://buildozer.readthedocs.io/en/latest/
 
 Buildozer is tool used to compile and make your code runnable on smartphone devices. It transforms your source code into an apk.
 
+if the Buildozer doesn't build the apk and shows error on screen, probably it's a common problem due some internal library. So look through internet and you'll find the solution. Don't give up!!
+
 after this, you can install it on your smartphone or improve it and punlish it on your playstore profile.
 
 # Can I update the source code?
