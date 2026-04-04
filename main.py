@@ -8,6 +8,7 @@ from kivymd.uix.button import MDIconButton, MDFlatButton
 from kivy.metrics import dp
 from functools import partial
 from kivymd.uix.dialog import MDDialog
+from kivy.core.clipboard import Clipboard
 
 
 class DBApp(DataBase):
@@ -56,12 +57,14 @@ class HomeScreen(MDScreen):
     
 
     def openDialog(self, instance, touch):
+        print(instance.children)
+
         if not self.dialog :
             self.dialog = MDDialog(
                 text = 'Copy infos',
                 buttons = [
                     MDFlatButton(text = 'Copy password'), 
-                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyText, )),
+                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyPassword, instance.children[1].text)),
                     MDFlatButton(text = 'Dismiss', on_release = self.closeDialog),
                 ]
             )
@@ -69,8 +72,9 @@ class HomeScreen(MDScreen):
             self.dialog.open()
 
     # I have to make it 
-    def copyText(self, label):
-        pass 
+    def copyPassword(self, label, *args):
+        #Clipboard.copy(label)
+        print(label)
         
         
     def closeDialog(self, obj):
