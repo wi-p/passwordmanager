@@ -25,7 +25,9 @@ class HomeScreen(MDScreen):
         DBApp('appdatabase').deleteItemTable('AppPassowrd', 'id', box.id)
         self.ids.lstpwd.remove_widget(box)
 
-    def copyItem(self):
+    def copyItem(self, value):
+        content = value
+        
         pass # Função para copiar item ao toca-lo.
 
     def load_passwords(self, *args):
