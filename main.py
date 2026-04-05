@@ -9,6 +9,7 @@ from kivy.metrics import dp
 from functools import partial
 from kivymd.uix.dialog import MDDialog
 from kivy.core.clipboard import Clipboard
+from widgets import BoxPasswords
 
 
 class DBApp(DataBase):
@@ -36,8 +37,8 @@ class HomeScreen(MDScreen):
         self.ids.lstpwd.clear_widgets()
 
         for value in values:
-            box = MDBoxLayout()
-            box.bind(on_touch_down = self.openDialog)
+            box = BoxPasswords()
+            box.bind(on_touch_down=lambda objeto=box: self.openDialog(objeto))
 
             box.id = str(value[0])
             box.size_hint_y = None
@@ -58,15 +59,15 @@ class HomeScreen(MDScreen):
             )       
     
 
-    def openDialog(self, instance, touch):
-        print(instance.children)
+    def openDialog(self, bx):
+        print(bx)
 
         if not self.dialog :
             self.dialog = MDDialog(
                 text = 'Copy infos',
                 buttons = [
                     MDFlatButton(text = 'Copy password'), 
-                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyPassword, instance.children[1].text)),
+                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyPassword, instance.children)),
                     MDFlatButton(text = 'Dismiss', on_release = self.closeDialog),
                 ]
             )
@@ -76,7 +77,9 @@ class HomeScreen(MDScreen):
     # I have to make it 
     def copyPassword(self, label, *args):
         #Clipboard.copy(label)
-        print(label)
+        print()
+        print(label[1].text)
+        print(label[2].text)
         
         
     def closeDialog(self, obj):
