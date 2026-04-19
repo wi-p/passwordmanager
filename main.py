@@ -38,8 +38,7 @@ class HomeScreen(MDScreen):
 
         for value in values:
             box = BoxPasswords()
-            box.bind(on_touch_down=lambda objeto=box: self.openDialog(objeto))
-
+            
             box.id = str(value[0])
             box.size_hint_y = None
             box.height = dp(50)
@@ -50,30 +49,11 @@ class HomeScreen(MDScreen):
 
             box.add_widget(MDLabel(text = str(value[0]), size_hint_x = None, width = dp(40)))
             box.add_widget(MDLabel(text = value[1]))
-            box.add_widget(MDLabel(text = value[2]))
-            box.add_widget(MDLabel(text = value[3]))
+            box.add_widget(MDLabel(text = value[2], allow_copy = True))
+            box.add_widget(MDLabel(text = value[3], allow_copy = True))
             box.add_widget(btn)
 
-            self.ids.lstpwd.add_widget(
-                box
-            )       
-    
-
-    def openDialog(self, bx):
-        print(bx)
-
-        if not self.dialog :
-            self.dialog = MDDialog(
-                text = 'Copy infos',
-                buttons = [
-                    MDFlatButton(text = 'Copy password'), 
-                    MDFlatButton(text = 'Copy username', on_release = partial(self.copyPassword, instance.children)),
-                    MDFlatButton(text = 'Dismiss', on_release = self.closeDialog),
-                ]
-            )
-
-            self.dialog.open()
-
+            self.ids.lstpwd.add_widget(box)  
     # I have to make it 
     def copyPassword(self, label, *args):
         #Clipboard.copy(label)
@@ -82,11 +62,7 @@ class HomeScreen(MDScreen):
         print(label[2].text)
         
         
-    def closeDialog(self, obj):
-        self.dialog.dismiss()
-        
-        self.dialog = None 
-
+   
 class AddScreen(MDScreen):
     def adicionar(self):
         rg = [self.ids.appname, self.ids.apppassword, self.ids.appusername]
