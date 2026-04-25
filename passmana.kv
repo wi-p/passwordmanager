@@ -165,6 +165,7 @@ ScreenManager:
                 height:dp(100)
                 
                 MDLabel:
+                    padding: dp(0), dp(60), dp(0), dp(0)
                     text:'Theme:'
                 
                 MDRaisedButton:
@@ -176,7 +177,7 @@ ScreenManager:
                 bold:True 
             
             MDLabel:
-                text:"""This is a simple password manager app developed to help phone users to handle with many passwords they have in their phones, being very hard sometimes. This software is totally open source, which means the full cole is available on github. Plus, you're free to use and modify the code as long as you keep my credits"""
+                text:"""This is a simple password manager app developed to help phone users to handle with many passwords they have in their phones, being very hard sometimes. This software is totally open source, which means the full cole is available on github. The app does not collect any of your data neither has access to internet (no sending your data through internet) Plus, you're free to use and modify the code as long as you keep my credits"""
                 size_hint_y:None
                 height:dp(200) 
                 halign:'justify'
@@ -187,6 +188,7 @@ ScreenManager:
 
             
         MDBottomNavigation:
+            size_hint_y:0.1
 
             MDBottomNavigationItem:
                 icon:'home'

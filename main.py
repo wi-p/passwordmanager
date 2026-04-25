@@ -76,7 +76,6 @@ class AddScreen(MDScreen):
 class SettingScreen(MDScreen):
     pass
 
-
 class PassMana(MDApp):
 
 
